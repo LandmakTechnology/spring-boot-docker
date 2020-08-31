@@ -32,6 +32,5 @@ docker-compose up -d
 ```docker
 docker ps -a
 ```
-
 ## License
-[Mithun Technologies](http://mithuntechnologies.co.in)
+[Landmark Technologies](http://www.mylandmarktech.com)

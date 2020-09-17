@@ -1,6 +1,6 @@
 node{
     stage("Git CheckOut"){
-        git url: 'https://github.com/MithunTechnologiesDevOps/spring-boot-mongo-docker.git',branch: 'master'
+        git url: 'https://github.com/simonLegah/UnityProject.git',branch: 'master'
     }
     
     stage(" Maven Clean Package"){
@@ -10,20 +10,20 @@ node{
     } 
     
     stage("Build Dokcer Image") {
-         sh "docker build -t dockerhandson/spring-boot-mongo ."
+         sh "docker build -t mylandmarktech/spring-boot-mongo ."
     }
     
     stage("Docker Push"){
         withCredentials([string(credentialsId: 'Docker_Hub_Pwd', variable: 'Docker_Hub_Pwd')]) {
-          sh "docker login -u dockerhandson -p ${Docker_Hub_Pwd}"
+          sh "docker login -u mylandmarktech -p ${Docker_Hub_Pwd}"
         }
-        sh "docker push dockerhandson/spring-boot-mongo"
+        sh "docker push mylandmarktech/spring-boot-mongo"
         
     }
     
     // Remove local image in Jenkins Server
     stage("Remove Local Image"){
-        sh "docker rmi -f dockerhandson/spring-boot-mongo"
+        sh "docker rmi -f mylandmarktech/spring-boot-mongo"
     }
     
     stage("Deploy to docker swarm cluster"){

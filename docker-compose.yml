@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  springboot:
+  springapp:
     image: mylandmarktech/spring-boot-mongo:latest
     restart: always # This will be ignored if we deploy in docker swarm
     environment:
@@ -14,7 +14,7 @@ services:
     depends_on:
       - mongo
     networks:
-    - springappnetwork  
+    - aws-network  
     deploy:  # This will be considered only in docker swarm.
       replicas: 2
       update_config:
@@ -34,12 +34,12 @@ services:
       - mongodb:/data/db
     restart: always
     networks:
-    - springappnetwork
+    - aws-network
     
 volumes:
   mongodb:
     external: true
     
 networks:
-  springappnetwork:
+  aws-network:
     external: true

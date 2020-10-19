@@ -19,7 +19,7 @@ Create docker image using Dockerfile
 
 
 ```docker
-docker build -t mylandmarktech/spring-boot-mongo .
+docker build -t mylandmarktech/myspringapps .
 ```
 
 ## Deploy Application Using Docker Compose 

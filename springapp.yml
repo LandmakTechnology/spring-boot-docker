@@ -1,14 +1,4 @@
-#=== Deploy Springboot App With Service type as LB & Mongo POD with Dynamcic Volumes======
-# Config Map
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: springapp-configmap
-data:
-  # Configuration values can be set as key-value properties
-  username: springapp
-  password: mongodb@123
----
+# Complete Manifest Where in single yml we defined Deployment & Service for SpringApp & PVC(with default  StorageClass),ReplicaSet & Service For Mongo.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,23 +16,16 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image:  mylandmarktech/myspringapps
+        image: mylandmarktech/springapp
         ports:
         - containerPort: 8080
         env:
+        - name: MONGO_DB_USERNAME
+          value: devdb
+        - name: MONGO_DB_PASSWORD
+          value: devdb@123
         - name: MONGO_DB_HOSTNAME
-          value: mongo
-        - name: MONGO_INITDB_ROOT_USERNAME
-          valueFrom:
-            configMapKeyRef:
-              name: springapp-configmap
-              key: username
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              name: springapp-configmap
-              key: password
-
+          value: mongo 
 ---
 apiVersion: v1
 kind: Service
@@ -65,7 +48,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 16Gi
+      storage: 1Gi
 ---
 apiVersion: apps/v1
 kind: ReplicaSet
@@ -91,17 +74,10 @@ spec:
          ports:
          - containerPort: 27017
          env:
-        - name: MONGO_INITDB_ROOT_USERNAME
-          valueFrom:
-            configMapKeyRef:
-              name: springapp-configmap
-              key: username
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              name: springapp-configmap
-              key: password
-
+         - name: MONGO_INITDB_ROOT_USERNAME
+           value: devdb
+         - name: MONGO_INITDB_ROOT_PASSWORD
+           value: devdb@123
          volumeMounts:
          - name: pvc
            mountPath: /data/db   

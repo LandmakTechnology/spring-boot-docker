@@ -37,7 +37,7 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-  type: LoadBalancer
+  type: nodePort #LoadBalancer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

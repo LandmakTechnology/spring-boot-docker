@@ -37,7 +37,8 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-  type: nodePort #LoadBalancer
+    nodePort: 30030
+  type: NodePort #LoadBalancer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -48,7 +49,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 16Gi
 ---
 apiVersion: apps/v1
 kind: ReplicaSet

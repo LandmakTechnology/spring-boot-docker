@@ -26,16 +26,14 @@ spec:
         ports:
         - containerPort: 8080 
 ---
-# Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    name: javawebapp
+  name: javawebappservice
 spec:
-  type: ClusterIP #NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
+  type: ClusterIP
   selector:
-    name: javawebapp
+     app: javawebapp
+  ports:
+  - port: 80
+    targetPort: 8080

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image: mylandmarktech/spring-boot-mongo:4 
+        image: mylandmarktech/spring-boot-mongo
         ports:
         - containerPort: 8080
         env:

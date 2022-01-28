@@ -1,4 +1,7 @@
-# Complete Manifest Where in single yml we defined Deployment & Service for SpringApp & PVC(with default  StorageClass),ReplicaSet & Service For Mongo.
+# Complete Manifest Where in single yml we defined Deployment & Service for SpringApp &
+#PVC(with default  StorageClass),ReplicaSet/StatefulSet & Service For Mongo.
+# storage class, pv, pvc, 
+# configMaps / Secretes
 apiVersion: apps/v1
 kind: Deployment
 metadata:

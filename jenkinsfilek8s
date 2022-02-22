@@ -45,6 +45,14 @@ steps{
       sh "docker push kidunnu/spring-boot-mongo"
 }
 }
+stage("Deploy To Kuberates Cluster"){
+       kubernetesDeploy(
+         configs: 'springBootMongo.yml', 
+         kubeconfigId: 'KUBERNATES_CONFIG',
+         enableConfigSubstitution: true
+        )
+     }
+
 stage('Deploy To Kuberates Cluster'){
 steps{
         sh "kubectl apply -f springapp.yml"

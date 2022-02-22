@@ -39,7 +39,7 @@ sh "docker build -t kidunnu/spring-boot-mongo ."
 }
 stage('Push Docker Image'){
 steps{
-      withCredentials([string(credentialsId: 'docker', variable: 'mydockercred')]) {
+      withCredentials([string(credentialsId: 'dockercredential', variable: 'dockercredential')]) {
       sh "docker login -u kidunnu -p ${mydockercred}" 
 }
       sh "docker push kidunnu/spring-boot-mongo"

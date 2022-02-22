@@ -1,1 +1,54 @@
 
+pipeline{
+  agent any 
+  tools{
+    maven "maven 3.8.4"
+  }
+stages{
+stage('SCM Checkout'){
+     steps{
+ git 'https://github.com/Kidunnu/spring-boot-docker.git'
+}
+}  
+stage('maven-Build'){ 
+steps{
+    sh "mvn clean package"
+  }
+}
+stage('code quality'){ 
+steps{
+    sh "mvn sonar:sonar"
+  }
+}
+stage('upload artifact'){ 
+steps{
+    sh "mvn deploy"
+  }
+}
+stage('approval'){
+steps{
+timeout (time:5, unit:'HOURS'){
+input message: "please verify and approve"
+}
+}
+}
+stage('Build Docker Image'){
+steps{
+sh "docker build -t kidunnu/spring-boot-mongo ."
+    }
+}
+stage('Push Docker Image'){
+steps{
+      withCredentials([string(credentialsId: 'mydockercred', variable: 'mydockercred')]) {
+      sh "docker login -u kidunnu -p ${mydockercred}" 
+}
+      sh "docker push kidunnu/spring-boot-mongo"
+}
+}
+stage('Deploy To Kuberates Cluster'){
+steps{
+        sh "kubectl apply -f springapp.yml"
+      } 
+     }
+}
+}

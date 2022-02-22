@@ -22,12 +22,11 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http:18.222.205.21:7000/</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>admin123</sonar.password>
+		<sonar.host.url>localhost:5000/</sonar.host.url>
+		<sonar.login>kalifat</sonar.login>
+		<sonar.password>kalifat</sonar.password>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 	</properties>
 
 	<dependencyManagement>
@@ -100,17 +99,17 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<distributionManagement>
+	<distributionManagement>
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://172.31.80.45:8081/repository/boa-release/</url>
+	      <url>http://localhost:8081/repository/docker_release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://172.31.80.45:8081/repository/maven-snapshots/</url>
+	      <url>http://localhost:8081/repository/docker_snapshot</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>

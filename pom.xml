@@ -91,6 +91,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+	</dependencies>
 	
 	<distributionManagement>
 	    <repository>
@@ -104,8 +105,9 @@
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
 	      <url>http://localhost:8081/repository/docker_snapshot</url>
 	    </snapshotRepository>
-	    </distributionManagement>
-	</dependencies>
+	    
+	</distributionManagement>
+	
 	<build>
 		<plugins>
 			<plugin>

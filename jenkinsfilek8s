@@ -47,11 +47,7 @@ steps{
 }
 stage("Deploy To Kuberates Cluster"){
 steps{
-         kubernetesDeploy(
-         configs: 'springBootMongo.yml', 
-         kubeconfigId: 'KUBERNATES_CONFIG',
-         enableConfigSubstitution: true
-        )
+     sh 'kubectl apply -f springBootMongo.yml'
      }
 }
 }

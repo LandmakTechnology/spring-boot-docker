@@ -48,7 +48,7 @@ steps{
 stage("Deploy To Kuberates Cluster"){
 steps {
      withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'local', contextName: '', credentialsId: 'k8scredential', namespace: '', serverUrl: 'https://127.0.0.1']]) {
-     kubectl apply -f deployment.yaml
+     kubectl apply -f springapp.yaml
      }
      }
 }

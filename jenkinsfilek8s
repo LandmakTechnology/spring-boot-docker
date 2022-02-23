@@ -46,8 +46,10 @@ steps{
 }
 }
 stage("Deploy To Kuberates Cluster"){
-steps{
-     sh 'kubectl apply -f springBootMongo.yml'
+steps {
+     withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'local', contextName: '', credentialsId: 'k8scredential', namespace: '', serverUrl: 'https://127.0.0.1']]) {
+     kubectl apply -f deployment.yaml
+     }
      }
 }
 }

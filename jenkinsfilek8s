@@ -47,7 +47,7 @@ steps{
 }
 stage("Deploy To Kuberates Cluster"){
 steps{
-     withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'kubecfg', contextName: '', credentialsId: 'testk8s', namespace: '', serverUrl: 'https://3.145.38.74']]) {
+     withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'kubecfg', contextName: '', credentialsId: 'testk8s', namespace: '', serverUrl: 'https://3.145.38.74:80']]) {
      sh "kubectl apply -f springapp.yml"
      }
      }

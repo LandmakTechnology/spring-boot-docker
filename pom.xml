@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://localhost:8081/repository/docker_release/</url>
+	      <url>http://3.140.185.104:8081/repository/docker_release</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://localhost:8081/repository/docker_snapshot</url>
+	      <url>http://3.140.185.104:8081/repository/docker_snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>

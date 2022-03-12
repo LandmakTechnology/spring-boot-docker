@@ -49,9 +49,9 @@ steps{
 steps{
      withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'adigtech.k8s.local', contextName: '', credentialsId: 'testk8s', namespace: '', serverUrl: 'https://api-adigtech-k8s-local-vdisi1-888848260.us-east-2.elb.amazonaws.com']]) {
      sh "kubectl apply -f springapp.yml"
-     }
-     }
+     }/*
 }
 }
 }
-*/
+}
+

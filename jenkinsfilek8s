@@ -45,7 +45,7 @@ steps{
       sh "docker push kidunnu/spring-boot-mongo"
 }
 }
-stage("Deploy To Kuberates Cluster"){
+/*stage("Deploy To Kuberates Cluster"){
 steps{
      withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'adigtech.k8s.local', contextName: '', credentialsId: 'testk8s', namespace: '', serverUrl: 'https://api-adigtech-k8s-local-vdisi1-888848260.us-east-2.elb.amazonaws.com']]) {
      sh "kubectl apply -f springapp.yml"
@@ -54,3 +54,4 @@ steps{
 }
 }
 }
+*/

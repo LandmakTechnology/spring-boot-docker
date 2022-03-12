@@ -22,9 +22,9 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://localhost:5000/</sonar.host.url>
+		<sonar.host.url>http://54.175.166.158:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
-		<sonar.password>kalifat</sonar.password>
+		<sonar.password>admin</sonar.password>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://3.140.185.104:8081/repository/docker_release</url>
+	      <url>http://54.175.166.158:7079/repository/team_release</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://3.140.185.104:8081/repository/docker_snapshot/</url>
+	      <url>http://54.175.166.158:7079/repository/team_snapshot</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>

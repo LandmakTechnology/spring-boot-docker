@@ -43,7 +43,7 @@ steps{
 }
 stage("Deploy To Kuberates Cluster"){
 steps{withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8ss', namespace: '', serverUrl: '') {
-     sh "kubectl apply -f springapp.yml"
+     sh "kubectl apply -f springBootMongo.yml"
      }
 }
 }

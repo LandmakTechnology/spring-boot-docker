@@ -20,11 +20,11 @@ steps{
     sh "mvn sonar:sonar"
   }
 }
-*/stage('upload artifact'){ 
+//stage('upload artifact'){ 
 steps{
     sh "mvn deploy"
   }
-}/*
+}//
 stage('approval'){
 steps{
 timeout (time:5, unit:'HOURS'){

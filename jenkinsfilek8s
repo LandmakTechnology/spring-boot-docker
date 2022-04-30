@@ -15,11 +15,11 @@ steps{
     sh "mvn clean package"
   }
 }
-stage('code quality'){ 
+/*stage('code quality'){ 
 steps{
     sh "mvn sonar:sonar"
   }
-}
+}*/
 
 stage('approval'){
 steps{

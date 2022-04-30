@@ -33,3 +33,11 @@ jobs:
        registry: docker.io
        username: ${{ secrets.DOCKER_USERNAME }}
        password: ${{ secrets.DOCKER_PASSWORD }}
+       
+    - name: send slack notification
+      uses: docker://technosophos/slack-notify
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_MESSAGE: Run succesfully
+      
+    

@@ -24,7 +24,7 @@ spec:
         app: springboot
     spec:
       containers:
-      - image: mylandmarktech/springapp
+      - image: charlesjatto/springapp
         name: springboot
         ports:
         - containerPort: 8080  

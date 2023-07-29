@@ -2,7 +2,7 @@ pipeline {
   agent any
     environment {
       // The following variable is required for a Semgrep Cloud Platform-connected scan:
-      SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN_CREDENTIAL')
+      SEMGREP_APP_TOKEN = credentials('5ba1a14d5a31fd146369e286e47c5b5bab7e83f572d01f835099b21433d78448')
 
       // Uncomment the following line to scan changed 
       // files in PRs or MRs (diff-aware scanning): 

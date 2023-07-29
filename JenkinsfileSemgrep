@@ -33,4 +33,5 @@ pipeline {
             -e SEMGREP_PR_ID=$SEMGREP_PR_ID \
             -v "$(pwd):$(pwd)" --workdir $(pwd) \
             returntocorp/semgrep semgrep ci '''
+
       }

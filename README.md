@@ -35,4 +35,4 @@ docker ps -a
 ## License
 [Landmark Technologies](http://www.mylandmarktech.com)
 
-This my work.
+Progress project.

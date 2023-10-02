@@ -32,7 +32,7 @@ public class UserResource {
     @GetMapping(produces = "application/JSON")
     public List<User> getAllUsers() {
     	List<User> users = (List<User>) userRepository.findAll();
-    	logger.info("Get Users Total Users: "+users.size());
+    	logger.info("Get User Total Users: "+users.size());
         return users;
     }
 

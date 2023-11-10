@@ -4,7 +4,7 @@ metadata:
   name: ingress-resource-1
 spec:
   rules:
-  - host: apps.landmarktech.info
+  - host: springapp.landmarktechapp.net
     http:
       paths:
       # Default Path(/)

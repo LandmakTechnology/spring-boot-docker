@@ -87,7 +87,7 @@
 		</dependency>
 	</dependencies>
 
-	  <distributionManagement>
+	  <!-- <distributionManagement>
 	    <releasesRepository>
 	      <id>nexus</id>
 	      <name>Springboot Nexus Repository</name>
@@ -98,9 +98,9 @@
 	      <id>nexus</id>
 	      <name>Springboot Nexus Repository</name>
 	      <url>http://localhost:8081/repository/springboot-snapshot/</url>
-	    </snapshotRepository>
+	    </snapshotRepository> -->
 	    
-    </distributionManagement>
+    <!-- </distributionManagement> -->
 
 	<build>
 		<plugins>

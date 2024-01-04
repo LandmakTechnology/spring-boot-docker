@@ -3,7 +3,7 @@ pipeline {
     environment {
         // Define your Docker Hub credentials in Jenkins and reference them here.
         DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
-        IMAGE_NAME = 'charlesjatto/spring-boot-mongo:v1'
+        IMAGE_NAME = 'charlesjatto/spring-boot-mongo:v3'
         DOCKERFILE = 'Dockerfile' // Adjust to your Dockerfile name if it's different
         // Reference the Maven tool by name
         MAVEN_HOME = tool name: 'Maven 3.9.1'

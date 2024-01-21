@@ -38,5 +38,10 @@ pipeline {
                 sh 'kubectl apply -f springapp.yml'
             }
         }
+        stage('UploadS3'){
+            steps {
+                sh 'aws s3 cp Jenkinsfile-jatto-2024-Declarative s3://s3-artifact-deployment'
+            }
+        }
     }
 }

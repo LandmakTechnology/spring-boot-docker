@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image: charlesjatto/spring-boot-mongo
+        image: charlesjatto/spring-boot-mongo:v4
         ports:
         - containerPort: 8080
         env:

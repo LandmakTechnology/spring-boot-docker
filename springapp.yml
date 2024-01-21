@@ -20,11 +20,7 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-<<<<<<< HEAD
         image: charlesjatto/spring-boot-mongo:v4
-=======
-        image: charlesjatto/spring-boot-mongo:v1
->>>>>>> 55a1f5d3af5ca89e9fccb0b5e11ab9937919a4b1
         ports:
         - containerPort: 8080
         env:
@@ -47,11 +43,7 @@ spec:
   - port: 80
     targetPort: 8080
     nodePort: 30030
-<<<<<<< HEAD
-  type: LoadBalancer #NodePort
-=======
   type: NodePort
->>>>>>> 55a1f5d3af5ca89e9fccb0b5e11ab9937919a4b1
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

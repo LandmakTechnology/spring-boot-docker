@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+     tools {
+        maven 'maven3.9.6'
+    }
+
+    stages {
+        stage(' Clone') {
+            steps {
+                git branch: 'dev', credentialsId: 'gitHubCredential', url: 'https://github.com/cxharles/spring-boot-docker.git'
+            }
+        }
+        stage ('Build'){
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage ('BuildDockerImage'){
+            steps {
+                sh 'docker build -t charlesjatto/spring-boot-mongo:v4 .'
+            }
+        }
+        stage ('DockerPush'){
+            steps {
+                withCredentials([string(credentialsId: 'dockerHubCredentials', variable: 'dockerHubCredentials')]) {
+                    sh 'docker login -u charlesjatto -p ${dockerHubCredentials}'
+                }
+                sh 'docker push charlesjatto/spring-boot-mongo:v4'
+            }
+        }
+        stage('RemoveDockerImages'){
+            steps {
+                sh 'docker rmi $(docker images -q)'
+            }
+        }
+        stage ('deployAppToUATK8S'){
+            steps {
+                sh 'kubectl apply -f springapp.yml'
+            }
+        }
+    }
+}

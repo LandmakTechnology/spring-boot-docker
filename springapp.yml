@@ -5,23 +5,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springappdeployment
+  name: springapp-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: springapp
+      app: app-springapp
   template:
     metadata:
-      name: springapppod
+      name: springapp-deployment
       labels:
-        app: springapp
+        app: app-springapp
     spec:
       containers:
       - name: springappcontainer
-        image: charlesjatto/spring-boot-mongo
+        image: charlesjatto/spring-boot-mongo:v4
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         env:
         - name: MONGO_DB_USERNAME
           value: devdb
@@ -33,14 +33,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: springapp
+  name: springapp-service
 spec:
   selector:
-    app: springapp
+    app: app-springapp
   ports:
   - port: 80
-    targetPort: 8080
-    nodePort: 30030
+    targetPort: 80
+    ## nodePort: 30030
   type: LoadBalancer
 ---
 apiVersion: v1

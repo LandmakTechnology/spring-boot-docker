@@ -2,6 +2,11 @@
 #PVC(with default  StorageClass),ReplicaSet/StatefulSet & Service For Mongo.
 # storage class, pv, pvc, 
 # configMaps / Secretes
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jatto-springapp
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

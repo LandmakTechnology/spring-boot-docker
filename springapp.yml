@@ -22,7 +22,7 @@ spec:
       - name: springappcontainer
         image: charlesjatto/spring-boot-mongo:v4
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         env:
         - name: MONGO_DB_USERNAME
           value: devdb
@@ -41,75 +41,68 @@ spec:
     app: app-springapp
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
     ## nodePort: 30030
   type: LoadBalancer
 ---
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: ebs-sc
+  name: mongodb
   namespace: jatto-springapp
-provisioner: kubernetes.io/aws-ebs
-parameters:
-  type: gp2
-  fsType: ext4
+labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: devdb
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: devdb@123
+      volumes:
+      - name: mongodb-data
+        persistentVolumeClaim:
+          claimName: mongodb-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongodbpvc 
+  name: mongodb-pvc
   namespace: jatto-springapp
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi  # Keep the existing storage size
-  storageClassName: ebs-sc  # Reference the StorageClass defined earlier
----
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: mongodbrs
-  namespace: jatto-springapp
-spec:
-  selector:
-    matchLabels:
-      app: mongodb
-  template:
-     metadata:
-       name: mongodbpod
-       labels:
-         app: mongodb
-     spec:
-       volumes:
-       - name: pvc
-         persistentVolumeClaim:
-           claimName: mongodbpvc     
-       containers:
-       - name: mongodbcontainer
-         image: mongo
-         ports:
-         - containerPort: 27017
-         env:
-         - name: MONGO_INITDB_ROOT_USERNAME
-           value: devdb
-         - name: MONGO_INITDB_ROOT_PASSWORD
-           value: devdb@123
-         volumeMounts:
-         - name: pvc
-           mountPath: /data/db   
+      storage: 10Gi
+  storageClassName: ebs-sc  # StorageClass name for AWS EBS volumes
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo
+  name: mongodb
   namespace: jatto-springapp
 spec:
-  type: ClusterIP
   selector:
     app: mongodb
   ports:
-  - port: 27017
-    targetPort: 27017
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+  type: ClusterIP

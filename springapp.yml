@@ -39,15 +39,9 @@ spec:
     app: app-springapp
   ports:
   - port: 80
-<<<<<<< HEAD
     targetPort: 80
     ## nodePort: 30030
   type: LoadBalancer
-=======
-    targetPort: 8080
-    nodePort: 30030
-  type: NodePort
->>>>>>> 0d805eb647fddf78b2a6013f4f59e3f4020259a3
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

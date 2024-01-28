@@ -31,26 +31,12 @@ spec:
         - name: MONGO_DB_HOSTNAME
           value: mongo 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: springapp-service
-  namespace: jatto-springapp
-spec:
-  selector:
-    app: app-springapp
-  ports:
-  - port: 80
-    targetPort: 8080
-    ## nodePort: 30030
-  type: LoadBalancer
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb
   namespace: jatto-springapp
-labels:
+  labels:
     app: mongodb
 spec:
   replicas: 1

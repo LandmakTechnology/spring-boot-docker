@@ -65,7 +65,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 10Gi  # Keep the existing storage size
   storageClassName: ebs-sc  # Reference the StorageClass defined earlier
 ---
 apiVersion: apps/v1

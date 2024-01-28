@@ -2,15 +2,11 @@
 #PVC(with default  StorageClass),ReplicaSet/StatefulSet & Service For Mongo.
 # storage class, pv, pvc, 
 # configMaps / Secretes
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: jatto-springapp
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: springapp-deployment
+  namespace: jatto-springapp
 spec:
   replicas: 2
   selector:
@@ -39,6 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: springapp-service
+  namespace: jatto-springapp
 spec:
   selector:
     app: app-springapp
@@ -52,6 +49,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mongodbpvc 
+  namespace: jatto-springapp
 spec:
   accessModes:
     - ReadWriteOnce
@@ -63,6 +61,7 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: mongodbrs
+  namespace: jatto-springapp
 spec:
   selector:
     matchLabels:
@@ -95,6 +94,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongo
+  namespace: jatto-springapp
 spec:
   type: ClusterIP
   selector:

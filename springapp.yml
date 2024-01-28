@@ -45,6 +45,16 @@ spec:
     ## nodePort: 30030
   type: LoadBalancer
 ---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc
+  namespace: jatto-springapp
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+  fsType: ext4
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -55,7 +65,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 16Gi
+      storage: 10Gi
+  storageClassName: ebs-sc  # Reference the StorageClass defined earlier
 ---
 apiVersion: apps/v1
 kind: ReplicaSet

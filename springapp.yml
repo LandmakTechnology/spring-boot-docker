@@ -42,7 +42,7 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-    nodePort: 30030
+    nodePort: 31003
   type: LoadBalancer
 ---
 apiVersion: apps/v1

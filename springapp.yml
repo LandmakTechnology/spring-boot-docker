@@ -31,13 +31,25 @@ spec:
         - name: MONGO_DB_HOSTNAME
           value: mongo 
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springapp-service
+  namespace: jatto-springapp
+spec:
+  selector:
+    app: app-springapp
+  ports:
+  - port: 80
+    targetPort: 8080
+    ## nodePort: 30030
+  type: LoadBalancer
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb
   namespace: jatto-springapp
-  labels:
-    app: mongodb
 spec:
   replicas: 1
   selector:
@@ -53,31 +65,11 @@ spec:
         image: mongo
         ports:
         - containerPort: 27017
-        volumeMounts:
-        - name: mongodb-data
-          mountPath: /data/db
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
           value: devdb
         - name: MONGO_INITDB_ROOT_PASSWORD
           value: devdb@123
-      volumes:
-      - name: mongodb-data
-        persistentVolumeClaim:
-          claimName: mongodb-pvc
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mongodb-pvc
-  namespace: jatto-springapp
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: ebs-sc  # StorageClass name for AWS EBS volumes
 ---
 apiVersion: v1
 kind: Service

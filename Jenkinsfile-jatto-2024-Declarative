@@ -25,7 +25,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'dockerHubCredentials', variable: 'dockerHubCredentials')]) {
                     sh 'docker login -u charlesjatto -p ${dockerHubCredentials}'
                 }
-                sh 'docker push charlesjatto/spring-boot-mongo:v4'
+                sh 'docker push charlesjatto/spring-boot-mongo'
             }
         }
         stage('RemoveDockerImages'){

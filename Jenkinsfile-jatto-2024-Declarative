@@ -17,7 +17,7 @@ pipeline {
         }
         stage ('BuildDockerImage'){
             steps {
-                sh 'docker build -t charlesjatto/spring-boot-mongo:v4 .'
+                sh 'docker build -t charlesjatto/spring-boot-mongo .'
             }
         }
         stage ('DockerPush'){

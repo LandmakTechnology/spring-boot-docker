@@ -34,15 +34,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: springapp-service
-  namespace: jatto-springapp
+  name: service-springapp
 spec:
   selector:
     app: app-springapp
   ports:
   - port: 80
     targetPort: 8080
-    ## nodePort: 30030
+    nodePort: 30030
   type: LoadBalancer
 ---
 apiVersion: apps/v1

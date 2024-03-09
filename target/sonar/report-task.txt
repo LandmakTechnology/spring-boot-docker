@@ -1,0 +1,6 @@
+projectKey=com.mt:spring-boot-mongo
+serverUrl=http://localhost:9000
+serverVersion=9.9.4.87374
+dashboardUrl=http://localhost:9000/dashboard?id=com.mt%3Aspring-boot-mongo
+ceTaskId=AY4hGKNFRKZWIoTz7QYf
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AY4hGKNFRKZWIoTz7QYf

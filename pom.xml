@@ -22,7 +22,7 @@
 		<logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
 
 		<sonar.host.url>http://localhost:9000/</sonar.host.url>
-		<sonar.login>squ_7be8e37296f35d82d4fd3cdcf6d7c6287bd76c5c</sonar.login>
+		<sonar.login>squ_5f498162ec59372e73ea1215019f425b19bdc80e</sonar.login>
 	</properties>
 
 	<dependencyManagement>

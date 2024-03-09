@@ -22,12 +22,7 @@
 		<logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
 
 		<sonar.host.url>http://localhost:9000/</sonar.host.url>
-<<<<<<< HEAD
-        <sonar.login>squ_0320a51befd27d3fd21a135b8b473e82c18f0f5d</sonar.login>
-=======
 		<sonar.login>squ_7be8e37296f35d82d4fd3cdcf6d7c6287bd76c5c</sonar.login>
-
->>>>>>> fd8a136 (updated repo)
 	</properties>
 
 	<dependencyManagement>
@@ -96,7 +91,6 @@
 
 	</dependencies>
 
-<<<<<<< HEAD
 	  <!-- <distributionManagement>
 	    <releasesRepository>
 	      <id>nexus</id>
@@ -112,7 +106,6 @@
 	    
     <!-- </distributionManagement> -->
 
-=======
 	 <distributionManagement>
 
                 <repository>
@@ -132,7 +125,7 @@
               </snapshotRepository>
 
       </distributionManagement>
->>>>>>> fd8a136 (updated repo)
+
 	<build>
 		<plugins>
 			<plugin>
